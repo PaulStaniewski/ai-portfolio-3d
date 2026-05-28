@@ -7,6 +7,31 @@ import { HeroScene } from './components/HeroScene'
 
 const navItems = ['Home', 'About', 'Projects', 'Skills', 'Contact']
 
+const strengths = [
+  {
+    icon: 'AI',
+    title: 'AI-Powered Systems',
+    text: 'Building RAG pipelines, AI agents, and intelligent applications that understand context and deliver reliable output.',
+  },
+  {
+    icon: '</>',
+    title: 'Fullstack Expertise',
+    text: 'From polished React interfaces to robust FastAPI and Django backends built for real product workflows.',
+  },
+  {
+    icon: 'UP',
+    title: 'Scalable & Secure',
+    text: 'Production-focused systems with clean architecture, strong performance, and maintainable engineering habits.',
+  },
+]
+
+const stackGroups = [
+  { label: 'Frontend', items: ['React', 'TS', 'Vite', 'CSS'] },
+  { label: 'Backend', items: ['Python', 'FastAPI', 'Django', 'REST'] },
+  { label: 'Data & Infra', items: ['Postgres', 'Vector DB', 'Redis', 'Docker'] },
+  { label: 'AI & Tools', items: ['RAG', 'OpenAI', 'Agents', 'LangChain'] },
+]
+
 function App() {
   const { scrollYProgress } = useScroll()
   const canvasOpacity = useTransform(scrollYProgress, [0, 0.34, 0.52], [1, 0.86, 0.24])
@@ -93,14 +118,109 @@ function App() {
 
       <section className="section-bridge" aria-hidden="true" />
 
-      <section className="content-section" id="projects">
-        <div className="section-heading">
-          <span>Selected Work</span>
-          <h2>Project systems ready for scroll-driven storytelling.</h2>
-        </div>
-        <p>
-          This section is intentionally light: the hero canvas stays fixed and can be extended into deeper project reveals as the page grows.
-        </p>
+      <section className="content-section about-section" id="about">
+        <span className="section-anchor" id="projects" aria-hidden="true" />
+        <motion.div
+          className="about-copy"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <div className="section-heading">
+            <span>About Me</span>
+            <h2>AI Engineer & Fullstack Developer</h2>
+          </div>
+          <p>
+            I build intelligent systems, scalable applications, and immersive web experiences that turn complex product ideas into fast, usable software.
+          </p>
+
+          <div className="strength-list">
+            {strengths.map((item, index) => (
+              <motion.article
+                className="strength-card"
+                key={item.title}
+                initial={{ opacity: 0, x: -18 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ delay: index * 0.08, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <span>{item.icon}</span>
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div
+          className="about-visual"
+          initial={{ opacity: 0, y: 28, scale: 0.98 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <div className="orbital-shard shard-one" />
+          <div className="orbital-shard shard-two" />
+          <div className="profile-panel">
+            <div className="portrait-glow">
+              <span>PS</span>
+            </div>
+            <div className="profile-caption">
+              <h3>Pawel Staniewski</h3>
+              <p>AI Engineer & Fullstack Developer</p>
+              <span>Poland / Remote</span>
+            </div>
+          </div>
+          <div className="availability-card">
+            <span />
+            Available for work
+          </div>
+          <div className="metric-stack">
+            <article>
+              <span>Experience</span>
+              <strong>4+</strong>
+              <p>Years building products</p>
+            </article>
+            <article>
+              <span>Projects</span>
+              <strong>10+</strong>
+              <p>Completed real-world systems</p>
+            </article>
+            <article>
+              <span>Technologies</span>
+              <strong>20+</strong>
+              <p>Tools in my production stack</p>
+            </article>
+          </div>
+        </motion.div>
+
+        <motion.div
+          className="tech-stack-panel"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <div className="stack-title">
+            <span />
+            <h3>My Core Tech Stack</h3>
+          </div>
+          <div className="stack-grid">
+            {stackGroups.map((group) => (
+              <div className="stack-group" key={group.label}>
+                <h4>{group.label}</h4>
+                <div>
+                  {group.items.map((item) => (
+                    <span key={item}>{item}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </section>
     </main>
   )
