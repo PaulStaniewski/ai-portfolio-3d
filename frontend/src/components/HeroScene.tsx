@@ -332,14 +332,14 @@ function Stage() {
 
 export function HeroScene() {
   const groupRef = useRef<THREE.Group>(null)
-  const { pointer, viewport } = useThree()
-  const isMobile = viewport.width < 5.8
-  const isTablet = viewport.width >= 5.8 && viewport.width < 8
-  const sceneScale = isMobile ? 0.48 : isTablet ? 0.68 : 0.88
+  const { pointer, size } = useThree()
+  const isMobile = size.width <= 640
+  const isTablet = size.width > 640 && size.width <= 1100
+  const sceneScale = isMobile ? 0.75 : isTablet ? 0.58 : 0.88
   const scenePosition: [number, number, number] = isMobile
-    ? [0.78, -1.46, 0]
+    ? [-0.62, -0.28, 0]
     : isTablet
-      ? [1.26, -0.92, 0]
+      ? [1.02, -1.38, 0]
       : [1.18, -0.08, 0]
 
   useFrame((state) => {
@@ -348,7 +348,7 @@ export function HeroScene() {
     const elapsed = state.clock.getElapsedTime()
     groupRef.current.rotation.y = THREE.MathUtils.lerp(groupRef.current.rotation.y, pointer.x * 0.12 - 0.12, 0.055)
     groupRef.current.rotation.x = THREE.MathUtils.lerp(groupRef.current.rotation.x, -pointer.y * 0.04, 0.055)
-    groupRef.current.position.y = Math.sin(elapsed * 0.42) * 0.08
+    groupRef.current.position.y = scenePosition[1] + Math.sin(elapsed * 0.42) * 0.08
   })
 
   return (

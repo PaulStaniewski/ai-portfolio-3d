@@ -1,4 +1,4 @@
-import { Suspense } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Environment, Preload } from '@react-three/drei'
 import { motion, useScroll, useTransform } from 'framer-motion'
@@ -94,10 +94,37 @@ const contactStats = [
 
 const footerLinks = ['GitHub', 'LinkedIn', 'Email', 'CV']
 
+function useIsMobileHero() {
+  const [isMobileHero, setIsMobileHero] = useState(false)
+
+  useEffect(() => {
+    const mobileQuery = window.matchMedia('(max-width: 640px)')
+    const updateMobileState = () => setIsMobileHero(mobileQuery.matches)
+
+    updateMobileState()
+    mobileQuery.addEventListener('change', updateMobileState)
+
+    return () => {
+      mobileQuery.removeEventListener('change', updateMobileState)
+    }
+  }, [])
+
+  return isMobileHero
+}
+
 function App() {
   const { scrollYProgress } = useScroll()
-  const canvasOpacity = useTransform(scrollYProgress, [0, 0.34, 0.52], [1, 0.86, 0.24])
-  const canvasY = useTransform(scrollYProgress, [0, 0.52], ['0svh', '-5svh'])
+  const isMobileHero = useIsMobileHero()
+  const canvasOpacity = useTransform(
+    scrollYProgress,
+    isMobileHero ? [0, 1] : [0, 0.34, 0.52],
+    isMobileHero ? [1, 1] : [1, 0.86, 0.24]
+  )
+  const canvasY = useTransform(
+    scrollYProgress,
+    isMobileHero ? [0, 1] : [0, 0.52],
+    isMobileHero ? ['0svh', '0svh'] : ['0svh', '-5svh']
+  )
 
   return (
     <main className="portfolio-shell">

@@ -2723,6 +2723,17 @@
 }
 
 @media (max-width: 640px) {
+  .portfolio-shell {
+    --mobile-hero-visual-height: clamp(340px, 54svh, 470px);
+  }
+
+  .fixed-canvas {
+    position: absolute;
+    inset: 0 0 auto;
+    height: var(--mobile-hero-visual-height);
+    will-change: auto;
+  }
+
   .site-nav {
     top: 18px;
   }
@@ -2740,8 +2751,8 @@
 
   .hero-section {
     min-height: 100svh;
-    padding-top: 88px;
-    padding-bottom: 38svh;
+    padding-top: var(--mobile-hero-visual-height);
+    padding-bottom: 72px;
   }
 
   .hero-copy {
