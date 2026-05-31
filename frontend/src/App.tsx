@@ -57,6 +57,25 @@ const projectPillars = [
   ['Delivery', 'Docker, CI/CD, production focus'],
 ]
 
+const skillsStats = [
+  ['20+', 'Technologies'],
+  ['5+', 'Years Experience'],
+  ['15+', 'Projects Built'],
+  ['Always', 'Learning'],
+]
+
+const workflowNodes = ['User', 'Query', 'RAG Pipeline', 'Retriever', 'Vector DB', 'LLM', 'Answer']
+
+const buildChecklist = ['Document Retrieval', 'Quiz Generation', 'Real-time Responses', 'Multi-agent System', 'RAG Pipeline']
+
+const skillGroups = [
+  { label: 'AI & RAG', icon: 'AI', items: ['Haystack', 'OpenAI', 'LangChain', 'RAG', 'Embeddings', 'Agents'] },
+  { label: 'Backend', icon: 'BE', items: ['Python', 'FastAPI', 'Django', 'REST', 'SSE', 'WebSockets'] },
+  { label: 'Database', icon: 'DB', items: ['PostgreSQL', 'pgvector', 'Redis', 'SQL', 'Vector DB', 'Indexing'] },
+  { label: 'Frontend', icon: 'FE', items: ['React', 'TypeScript', 'TailwindCSS', 'Vite', 'HTML5', 'CSS3'] },
+  { label: 'DevOps & Tools', icon: 'DO', items: ['Docker', 'Git', 'GitHub', 'Linux', 'VS Code', 'Nginx'] },
+]
+
 function App() {
   const { scrollYProgress } = useScroll()
   const canvasOpacity = useTransform(scrollYProgress, [0, 0.34, 0.52], [1, 0.86, 0.24])
@@ -359,6 +378,142 @@ function App() {
             </article>
           ))}
         </motion.div>
+      </section>
+
+      <section className="skills-section" id="skills">
+        <div className="skills-atmosphere" aria-hidden="true">
+          <span className="workspace-cube cube-one" />
+          <span className="workspace-cube cube-two" />
+          <span className="workspace-orb orb-one" />
+          <span className="workspace-orb orb-two" />
+        </div>
+
+        <motion.div
+          className="skills-intro"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span>Skills & Technologies</span>
+          <h2>The Tech Stack Behind My Work</h2>
+          <p>A modern toolkit for building AI-powered systems, scalable applications, and intuitive interfaces. Crafted for performance, designed for impact.</p>
+          <div className="skills-stats">
+            {skillsStats.map(([value, label]) => (
+              <article key={label}>
+                <span>{value}</span>
+                <p>{label}</p>
+              </article>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div
+          className="workspace-composition"
+          initial={{ opacity: 0, y: 34, scale: 0.985 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.22 }}
+          transition={{ duration: 0.78, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <article className="editor-monitor">
+            <div className="window-dots"><span /><span /><span /></div>
+            <aside>
+              <strong>EXPERTISE</strong>
+              <span>AI & RAG</span>
+              <span>Backend</span>
+              <span>Frontend</span>
+              <span>Database</span>
+              <span>Architecture</span>
+            </aside>
+            <div className="code-screen">
+              <span>skills.py</span>
+              <pre>{`class Developer:
+  def __init__(self):
+    self.focus = [
+      "AI-powered systems",
+      "Scalable backend architecture",
+      "Real-time data processing",
+      "Intuitive user experiences",
+    ]
+
+  def solve(self, problem):
+    plan = self.analyze(problem)
+    solution = self.build(plan)
+    return self.deliver(solution)
+
+# Built to create impact
+dev = Developer()`}</pre>
+            </div>
+          </article>
+
+          <article className="terminal-panel">
+            <strong>bash</strong>
+            <p><span>pawel@portfolio:~$</span> ls skills/</p>
+            <p>ai/ backend/ frontend/ devops/</p>
+            <p><span>pawel@portfolio:~$</span> cat mindset.txt</p>
+            <p>{'>'} Solve problems</p>
+            <p>{'>'} Build scalable systems</p>
+            <p>{'>'} Automate everything</p>
+          </article>
+
+          <article className="ai-flow-panel">
+            <h3>AI System Flow</h3>
+            <div className="flow-grid">
+              {workflowNodes.map((node) => (
+                <span key={node}>{node}</span>
+              ))}
+            </div>
+          </article>
+
+          <article className="currently-building">
+            <h3>Currently Building</h3>
+            <div>
+              <span>G</span>
+              <div>
+                <strong>GeeBOT</strong>
+                <p>AI Agent Chatbot Platform</p>
+              </div>
+            </div>
+            <ul>
+              {buildChecklist.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+            <div className="build-progress"><span /></div>
+          </article>
+        </motion.div>
+
+        <motion.div
+          className="skills-stack-board"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+        >
+          {skillGroups.map((group) => (
+            <article key={group.label}>
+              <div>
+                <span>{group.icon}</span>
+                <h3>{group.label}</h3>
+              </div>
+              <div>
+                {group.items.map((item) => (
+                  <span key={item}>{item}</span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </motion.div>
+
+        <motion.p
+          className="skills-quote"
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        >
+          Combining AI, robust backend systems, and modern interfaces to build products that solve real problems.
+        </motion.p>
       </section>
     </main>
   )
