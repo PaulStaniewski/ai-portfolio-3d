@@ -2736,13 +2736,20 @@
 
   .site-nav {
     top: 18px;
+    width: calc(100% - 32px);
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
   }
 
   .brand {
+    flex: 0 1 auto;
     font-size: 25px;
+    white-space: nowrap;
   }
 
   .talk-button {
+    flex: 0 0 auto;
     min-height: 40px;
     padding: 0 15px;
     border-radius: 10px;
