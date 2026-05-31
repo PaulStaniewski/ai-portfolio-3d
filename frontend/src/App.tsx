@@ -123,7 +123,7 @@ function App() {
 
       <nav className="site-nav" aria-label="Primary navigation">
         <a className="brand" href="#home" aria-label="Portfolio home">
-          PH
+          GEE SOLUTION
         </a>
         <div className="nav-links">
           {navItems.map((item) => (
@@ -164,19 +164,6 @@ function App() {
           </div>
         </motion.div>
       </section>
-
-      <div className="scroll-cue" aria-hidden="true">
-        <span className="mouse">
-          <span>v</span>
-        </span>
-        <span>Scroll to explore</span>
-        <div className="progress-dots">
-          <i />
-          <i className="current" />
-          <i />
-          <i />
-        </div>
-      </div>
 
       <section className="section-bridge" aria-hidden="true" />
 
@@ -550,7 +537,7 @@ dev = Developer()`}</pre>
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.68, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span>Let's Connect Universe</span>
+          <span>Let's Connect</span>
           <h2>Let's Create The Future Together</h2>
           <p>Whether you have a project in mind or just want to say hi, I would love to hear from you.</p>
           <div className="contact-intent-grid">
