@@ -32,6 +32,31 @@ const stackGroups = [
   { label: 'AI & Tools', items: ['RAG', 'OpenAI', 'Agents', 'LangChain'] },
 ]
 
+const geebotStack = ['Django REST', 'FastAPI SSE', 'Haystack RAG', 'pgvector', 'AI Agents', 'Quiz Gen']
+
+const projectCards = [
+  {
+    kicker: 'AI Learning',
+    title: 'Codex Platform',
+    text: 'FastAPI, React, JWT auth, AI tutor flows, lessons, practice sessions, and progress tracking.',
+    stat: 'Tutor OS',
+  },
+  {
+    kicker: 'Analytics',
+    title: 'Portfolio Intelligence',
+    text: 'Realtime product signals, project insights, and clean dashboards for measuring portfolio impact.',
+    stat: 'Live Data',
+  },
+]
+
+const projectPillars = [
+  ['AI Systems', 'RAG, agents, document retrieval'],
+  ['Backend', 'FastAPI, Django, SSE, REST'],
+  ['Databases', 'PostgreSQL, pgvector, Redis'],
+  ['Frontend', 'React, TypeScript, glass UI'],
+  ['Delivery', 'Docker, CI/CD, production focus'],
+]
+
 function App() {
   const { scrollYProgress } = useScroll()
   const canvasOpacity = useTransform(scrollYProgress, [0, 0.34, 0.52], [1, 0.86, 0.24])
@@ -119,7 +144,6 @@ function App() {
       <section className="section-bridge" aria-hidden="true" />
 
       <section className="content-section about-section" id="about">
-        <span className="section-anchor" id="projects" aria-hidden="true" />
         <motion.div
           className="about-copy"
           initial={{ opacity: 0, y: 24 }}
@@ -220,6 +244,120 @@ function App() {
               </div>
             ))}
           </div>
+        </motion.div>
+      </section>
+
+      <section className="projects-section" id="projects">
+        <div className="project-atmosphere" aria-hidden="true">
+          <span className="project-crystal crystal-a" />
+          <span className="project-crystal crystal-b" />
+          <span className="project-crystal crystal-c" />
+          <span className="project-ring" />
+        </div>
+
+        <motion.div
+          className="projects-heading"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.45 }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span>Featured Projects</span>
+          <h2>Projects I Build That Make Impact</h2>
+          <p>Production-ready systems, AI-powered workflows, and modern web experiences shaped into polished product showcases.</p>
+        </motion.div>
+
+        <motion.div
+          className="project-showcase"
+          initial={{ opacity: 0, y: 36, scale: 0.98 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <article className="support-project support-left">
+            <span>{projectCards[0].kicker}</span>
+            <h3>{projectCards[0].title}</h3>
+            <p>{projectCards[0].text}</p>
+            <div className="mini-screen">
+              <i />
+              <i />
+              <i />
+            </div>
+            <strong>{projectCards[0].stat}</strong>
+          </article>
+
+          <article className="main-project-panel">
+            <div className="project-copy">
+              <span>Live System</span>
+              <h3>GeeBOT</h3>
+              <p>
+                Multi-agent AI chatbot platform with RAG, document retrieval, realtime streaming, smart tools, and quiz generation.
+              </p>
+              <div className="project-tags">
+                {geebotStack.map((item) => (
+                  <span key={item}>{item}</span>
+                ))}
+              </div>
+              <div className="project-actions">
+                <a href="#contact">View Project {'->'}</a>
+                <a href="#contact">Live Demo</a>
+              </div>
+            </div>
+
+            <div className="chat-product-card">
+              <div className="chat-sidebar">
+                <span />
+                <span />
+                <span />
+                <span />
+              </div>
+              <div className="chat-window">
+                <div>
+                  <strong>GeeBOT</strong>
+                  <span>Online</span>
+                </div>
+                <p className="chat-question">What is RAG and how does it work?</p>
+                <article>
+                  <h4>RAG Architecture</h4>
+                  <p>Combines document retrieval with generated answers for accurate, source-aware responses.</p>
+                </article>
+                <footer>Ask anything...</footer>
+              </div>
+            </div>
+          </article>
+
+          <article className="support-project support-right">
+            <span>{projectCards[1].kicker}</span>
+            <h3>{projectCards[1].title}</h3>
+            <p>{projectCards[1].text}</p>
+            <div className="analytics-grid">
+              <div><strong>2.4K</strong><small>Visits</small></div>
+              <div><strong>12</strong><small>Projects</small></div>
+              <div><strong>8.3K</strong><small>Views</small></div>
+            </div>
+            <strong>{projectCards[1].stat}</strong>
+          </article>
+        </motion.div>
+
+        <motion.div
+          className="project-pillars"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <div>
+            <span />
+            <h3>What I Work On</h3>
+            <p>End-to-end systems that are scalable, performant, and useful for real users.</p>
+          </div>
+          {projectPillars.map(([title, text]) => (
+            <article key={title}>
+              <span>{title.slice(0, 2)}</span>
+              <h4>{title}</h4>
+              <p>{text}</p>
+            </article>
+          ))}
         </motion.div>
       </section>
     </main>
