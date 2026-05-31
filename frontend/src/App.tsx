@@ -76,6 +76,24 @@ const skillGroups = [
   { label: 'DevOps & Tools', icon: 'DO', items: ['Docker', 'Git', 'GitHub', 'Linux', 'VS Code', 'Nginx'] },
 ]
 
+const contactCards = [
+  ['Email', 'pawel@portfolio.dev', 'Send Email'],
+  ['LinkedIn', 'linkedin.com/in/pawelth', 'Connect'],
+  ['GitHub', 'github.com/pawelth', 'View Profile'],
+  ['Location', 'Poland (CET)', 'Remote First'],
+]
+
+const contactLabels = ['AI Systems', 'Automation', 'Web Apps', 'APIs & Backend', 'Data Solutions']
+
+const contactStats = [
+  ['15+', 'Projects Delivered'],
+  ['100%', 'Client Satisfaction'],
+  ['24h', 'Avg. Response Time'],
+  ['Remote', 'Global Collaboration'],
+]
+
+const footerLinks = ['GitHub', 'LinkedIn', 'Email', 'CV']
+
 function App() {
   const { scrollYProgress } = useScroll()
   const canvasOpacity = useTransform(scrollYProgress, [0, 0.34, 0.52], [1, 0.86, 0.24])
@@ -514,6 +532,121 @@ dev = Developer()`}</pre>
         >
           Combining AI, robust backend systems, and modern interfaces to build products that solve real problems.
         </motion.p>
+      </section>
+
+      <section className="contact-section" id="contact">
+        <div className="contact-atmosphere" aria-hidden="true">
+          <span className="contact-orb contact-orb-one" />
+          <span className="contact-orb contact-orb-two" />
+          <span className="contact-orb contact-orb-three" />
+          <span className="contact-crystal contact-crystal-one" />
+          <span className="contact-crystal contact-crystal-two" />
+        </div>
+
+        <motion.div
+          className="contact-copy"
+          initial={{ opacity: 0, y: 26 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.68, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span>Let's Connect Universe</span>
+          <h2>Let's Create The Future Together</h2>
+          <p>Whether you have a project in mind or just want to say hi, I would love to hear from you.</p>
+          <div className="contact-intent-grid">
+            <article>Open to new opportunities</article>
+            <article>Collaborations & partnerships</article>
+            <article>AI & innovative projects</article>
+            <article>Long-term relationships</article>
+          </div>
+          <div className="contact-stats">
+            {contactStats.map(([value, label]) => (
+              <article key={label}>
+                <strong>{value}</strong>
+                <span>{label}</span>
+              </article>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div
+          className="connect-universe"
+          initial={{ opacity: 0, scale: 0.96, y: 28 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.24 }}
+          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <div className="orbit orbit-one" />
+          <div className="orbit orbit-two" />
+          <div className="orbit orbit-three" />
+          <div className="digital-core">
+            <div className="core-message">
+              <span>Send a Message</span>
+              <p>Tell me about your project and let's build something extraordinary together.</p>
+              <a href="mailto:pawel@portfolio.dev">Start Conversation {'->'}</a>
+            </div>
+          </div>
+          {contactLabels.map((label, index) => (
+            <span className={`orbit-label orbit-label-${index + 1}`} key={label}>
+              {label}
+            </span>
+          ))}
+        </motion.div>
+
+        <motion.aside
+          className="contact-card"
+          initial={{ opacity: 0, x: 24 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <h3>Get In Touch</h3>
+          {contactCards.map(([title, detail, action]) => (
+            <article key={title}>
+              <span>{title.slice(0, 2)}</span>
+              <div>
+                <strong>{title}</strong>
+                <p>{detail}</p>
+              </div>
+              <a href={title === 'Email' ? 'mailto:pawel@portfolio.dev' : '#contact'}>{action}</a>
+            </article>
+          ))}
+          <p>Available Worldwide</p>
+        </motion.aside>
+
+        <motion.div
+          className="contact-banner"
+          initial={{ opacity: 0, y: 22 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.45 }}
+          transition={{ duration: 0.62, ease: [0.22, 1, 0.36, 1] }}
+        >
+          Building modern, AI-powered solutions that solve real problems and create real impact.
+        </motion.div>
+
+        <footer className="site-footer">
+          <div>
+            <span className="footer-mark">{'</>'}</span>
+            <div>
+              <h3>Let's turn ideas into impactful digital products.</h3>
+              <p>I am excited to learn about your project and explore how we can work together.</p>
+            </div>
+          </div>
+          <a className="footer-cta" href="mailto:pawel@portfolio.dev">Ready to start your next project? {'->'}</a>
+          <div className="quick-response">
+            <span />
+            <strong>Quick Response</strong>
+            <p>I usually reply within 24 hours</p>
+          </div>
+          <nav className="footer-socials" aria-label="Footer social links">
+            {footerLinks.map((link) => (
+              <a href={link === 'Email' ? 'mailto:pawel@portfolio.dev' : '#contact'} key={link}>
+                {link}
+              </a>
+            ))}
+          </nav>
+          <p className="footer-bottom">© 2026 Pawel H. All rights reserved. Crafted with passion.</p>
+        </footer>
       </section>
     </main>
   )
